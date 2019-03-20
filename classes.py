@@ -1,24 +1,24 @@
-class Ponto:
-    def __init__(self, id):
-        self.id = id
-        self.coord = []
+class Point:
+    def __init__(self, name, x, y):
+        self.name = name
+        self.x = x
+        self.y = y
         self.x_fixed = False
         self.y_fixed = False
         
         
 class Element:
-    def __init__(self, n_group, n_elements, mtype, ):
-        self.n_group = n_group
-        self.n_elements = n_elements
+    def __init__(self, name, mtype):
+        self.name = name
         self.mtype = mtype
-        self.incidences = []
-        self.material
-        self.moduloelast
-        self.res_tracao
-        self.res_compress
-        self.area
+        self.incidences_i = ""
+        self.incidences_f = ""
+        self.elast = ""
+        self.tracao = ""
+        self.compress = ""
+        self.area = ""
 
-class Forca:
+class Load:
     def __init__(self, id, point, intensity, dir):
         self.id = id
         self.point = point
