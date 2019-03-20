@@ -19,8 +19,7 @@ class Element:
         self.area = ""
 
 class Load:
-    def __init__(self, id, point, intensity, dir):
-        self.id = id
+    def __init__(self, point):
         self.point = point
-        self.intensity = intensity
-        self.dir = dir
+        self.intensity_x = "0"
+        self.intensity_y = "0"
