@@ -5,6 +5,7 @@ class Point:
         self.y = y
         self.x_fixed = False
         self.y_fixed = False
+        self.gdl = [0,0]
         
         
 class Element:
@@ -17,6 +18,9 @@ class Element:
         self.tracao = ""
         self.compress = ""
         self.area = ""
+        self.cos = 0
+        self.sen = 0
+
 
 class Load:
     def __init__(self, point):
