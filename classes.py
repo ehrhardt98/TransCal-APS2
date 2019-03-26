@@ -5,7 +5,7 @@ class Point:
         self.y = y
         self.x_fixed = False
         self.y_fixed = False
-        self.gdl = [0,0]
+        self.gdl = [(name*2)-1,name*2]
         
         
 class Element:
@@ -21,9 +21,13 @@ class Element:
         self.cos = 0
         self.sen = 0
 
-
 class Load:
     def __init__(self, point):
         self.point = point
         self.intensity_x = "0"
         self.intensity_y = "0"
+
+class Rigidez:
+    def __init__(self):
+        self.value = 0
+        self.gdl = [-1,-1]
