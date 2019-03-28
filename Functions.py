@@ -62,8 +62,22 @@ def superMatrixMaker(lista_matrizes, n_nodes):
             for j in i:
                 gdl = j.gdl
                 superMatrix[gdl[0]-1][gdl[1]-1] += round(j.value,4)
-    print(superMatrix)
-    return superMatrix
+    #print(np.array(superMatrix))
+    return np.array(superMatrix)
+
+def contornoMaker(superMatrix, vetorDisplace, vetorLoad):
+    matrizContorno = []
+    vetorLoadContorno = []
+    for i in range(0,len(superMatrix)):
+        linha = []
+        if vetorDisplace[i][0] !=0:
+            vetorLoadContorno.append(vetorLoad[i])
+        for j in range(0,len(superMatrix)):
+            if (vetorDisplace[j][0] != 0) & (vetorDisplace[i][0] != 0):
+                linha.append(superMatrix[i][j])
+        if vetorDisplace[i][0] != 0:
+            matrizContorno.append(linha)
+    return np.array(matrizContorno), np.array(vetorLoadContorno)
 
 
             

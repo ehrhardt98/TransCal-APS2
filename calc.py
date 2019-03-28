@@ -5,10 +5,10 @@ from classes import Element
 from classes import Load
 from classes import Rigidez
 from parser import pars
-from functions import calcSenCos
-from functions import matrixMaker
-from functions import superMatrixMaker
-from functions import contornoMaker
+from Functions import calcSenCos
+from Functions import matrixMaker
+from Functions import superMatrixMaker
+from Functions import contornoMaker
 
 # Arquivo de entrada
 arquivo = "entrada.txt"
