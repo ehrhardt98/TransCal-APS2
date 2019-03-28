@@ -5,7 +5,7 @@ class Point:
         self.y = y
         self.x_fixed = False
         self.y_fixed = False
-        self.gdl = [(name*2)-1,name*2]
+        self.gdl = [(int(name)*2)-1,int(name)*2]
         
         
 class Element:
@@ -18,6 +18,7 @@ class Element:
         self.tracao = ""
         self.compress = ""
         self.area = ""
+        self.comprimento = 0
         self.cos = 0
         self.sen = 0
 
