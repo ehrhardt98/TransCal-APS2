@@ -84,23 +84,28 @@ def strain_stressMaker(lista_elementos):
     lista_deformacao = []
     for i in lista_elementos:
         vetor_deslocamento = []
-        vetor_deslocamento.append(i.incidence_i.x_displacement)
-        vetor_deslocamento.append(i.incidence_i.y_displacement)
-        vetor_deslocamento.append(i.incidence_f.x_displacement)
-        vetor_deslocamento.append(i.incidence_f.y_displacement)
+        vetor_deslocamento.append(i.incidences_i.x_displacement)
+        vetor_deslocamento.append(i.incidences_i.y_displacement)
+        vetor_deslocamento.append(i.incidences_f.x_displacement)
+        vetor_deslocamento.append(i.incidences_f.y_displacement)
         vetor_angle = [-i.cos, -i.sen, i.cos, i.sen]
-        somatoria = 0
-        for i in range(0,4):
-            somatoria += vetor_angle[i] * vetor_deslocamento[i]
+        somatoria = float(0)
+
+        for j in range(0,4):
+            somatoria += vetor_angle[j] * vetor_deslocamento[j]
         tensao = somatoria /i.comprimento
-        deformacao = somatoria * i.elast / i.comprimento
+        deformacao = somatoria * float(i.elast) / i.comprimento
         lista_tensao.append(tensao)
         lista_deformacao.append(deformacao)
     return lista_tensao, lista_deformacao
     
-
-
-            
-
-
-
+def reactionsMaker(superMatrix, vetor_deslocamento, vetor_carregamento):
+    lista_reactions = []
+    for i in range(0,len(vetor_carregamento)):
+        if vetor_carregamento[i][0] == -0.001:
+            somatoria = float(0)
+            for j in range(0,len(vetor_carregamento)):
+                somatoria += superMatrix[i][j]*vetor_deslocamento[j]
+            lista_reactions.append(somatoria)
+            vetor_carregamento[i][0] = somatoria
+    return lista_reactions, vetor_carregamento

@@ -6,10 +6,10 @@ class Point:
         self.x_fixed = False
         self.y_fixed = False
         self.gdl = [(int(name)*2)-1,int(name)*2]
-        self.x_displacement = ""
-        self.y_displacement = ""
-        self.x_reaction = ""
-        self.y_reaction = ""
+        self.x_displacement = 0
+        self.y_displacement = 0
+        self.x_reaction = 0
+        self.y_reaction = 0
         
         
 class Element:
@@ -25,8 +25,8 @@ class Element:
         self.comprimento = 0
         self.cos = 0
         self.sen = 0
-        self.strain = ""
-        self.stress = ""
+        self.strain = 0
+        self.stress = 0
 
 class Load:
     def __init__(self, point):
