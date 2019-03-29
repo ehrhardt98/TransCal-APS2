@@ -42,4 +42,4 @@ def unpars(arquivo):
 
     saida.close()
 
-unpars("entrada.txt")
+unpars("entrada_aps.fem")
