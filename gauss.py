@@ -1,6 +1,6 @@
 import numpy as np
 
-def sistema(ite, tol, a, b):
+def gauss(ite, tol, a, b):
     n = len(a)
     x = np.zeros(n)
     x_old = np.zeros(n)
@@ -16,8 +16,7 @@ def sistema(ite, tol, a, b):
         erro = max(np.divide(np.subtract(x, x_old), x+1))
         x_old = x
         i += 1
-    print(i)
-    print(x)
+    return x
 
 a = np.array([[1.59*(10**8),-0.40*(10**8), -0.54*(10**8)],[-0.40*(10**8),1.70*(10**8), 0.40*(10**8)],[-0.54*(10**8), 0.40*(10**8), 0.54*(10**8)]])
 f = np.array([0.0,150.0,-100.0])
