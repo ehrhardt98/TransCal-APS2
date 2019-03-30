@@ -104,7 +104,7 @@ def reactionsMaker(superMatrix, vetor_deslocamento, vetor_carregamento):
     for i in range(0,len(vetor_carregamento)):
         if vetor_carregamento[i][0] == -0.001:
             somatoria = float(0)
-            for j in range(0,len(vetor_carregamento)):
+            for j in range(0,len(vetor_carregamento)-1):
                 somatoria += superMatrix[i][j]*vetor_deslocamento[j]
             lista_reactions.append(somatoria)
             vetor_carregamento[i][0] = somatoria
