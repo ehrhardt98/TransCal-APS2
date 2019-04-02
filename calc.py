@@ -66,7 +66,7 @@ def calc(point_list, element_list, load_list, method='gauss'):
         v_deslocamento_metodo = gauss(
             5000, 0.0001, matrixContorno, v_carregamento_contorno)
     else:
-        v_deslocamento_metodo = obe_j(
+        v_deslocamento_metodo = gauss(
             5000, 0.0001, matrixContorno, v_carregamento_contorno)
 
     contador = 0
