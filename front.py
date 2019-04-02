@@ -7,11 +7,12 @@ import sys
 
 import argparse
 parser = argparse.ArgumentParser(description='Solves a truss structure')
-parser.add_argument('-m', type=str,
+parser.add_argument('-m', type=str, default='gauss'
                     help='Resolution method as a string (gauss or jacobi)')
-parser.add_argument('-ite', type=int,
+parser.add_argument('-ite', type=int, default='5000'
                     help='Number of iterations')
-
+parser.add_argument('-file', type=str, default='entrada.txt'
+                    help='input file')
 args = parser.parse_args()
 
 ss = SystemElements()
@@ -19,7 +20,7 @@ element_type = 'truss'
 
 
 if __name__ == "__main__":
-    point_list, element_list, load_list = pars("entrada.txt")
+    point_list, element_list, load_list = pars(args.file)
     exagero = 10000
 
     for i in element_list:
@@ -62,15 +63,9 @@ if __name__ == "__main__":
     ss.solve()
     ss.show_displacement()
     # point_list, element_list, load_list = calc(point_list, element_list, load_list)
-    if args.m and args.ite:
-        point_list, element_list, load_list = calc(
-            point_list, element_list, load_list, args.m, args.ite)
-    elif args.m:
-        point_list, element_list, load_list = calc(
-            point_list, element_list, args.m)
-    else:
-        point_list, element_list, load_list = calc(
-            point_list, element_list, load_list)
+
+    point_list, element_list, load_list = calc(
+        point_list, element_list, load_list, args.m, args.ite)
 
     for i in element_list:
         inicial_x = float(i.incidences_i.x) + \
