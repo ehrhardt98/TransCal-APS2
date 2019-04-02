@@ -17,8 +17,8 @@ def unpars(point_list, element_list):
             reaction_list.append("\n" + point.name + " FX " + str(point.x_reaction))
         if point.y_reaction != 0:
             reaction_list.append("\n" + point.name + " FY " + str(point.y_reaction))
-            print(type(point.x_displacement[0]))
-        text = "\n" + point.name + " " + str(point.x_displacement[0]) + " " + str(point.y_displacement[0])
+            print(type(point.x_displacement))
+        text = "\n" + point.name + " " + str(point.x_displacement) + " " + str(point.y_displacement)
         saida.write(text)
 
     saida.write("\n\n*REACTION_FORCES")
@@ -30,8 +30,8 @@ def unpars(point_list, element_list):
 
     for k in range(len(element_list)):
         element = element_list[k]
-        stress_list.append("\n" + element.name + " " + str(element.stress[0]))
-        text = "\n" + element.name + " " + str(element.strain[0])
+        stress_list.append("\n" + element.name + " " + str(element.stress))
+        text = "\n" + element.name + " " + str(element.strain)
         saida.write(text)
 
     saida.write("\n\n*ELEMENT_STRESS")
