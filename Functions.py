@@ -7,12 +7,12 @@ from classes import Rigidez
 
 
 def calcSenCos(lista_elementos,lista_pontos):
-    for i in lista_elementos:
-        for j in lista_pontos:
-            if i.incidences_i == j.name:
-                i.incidences_i = j
-            elif i.incidences_f == j.name:
-                i.incidences_f = j
+    # for i in lista_elementos:
+    #     for j in lista_pontos:
+    #         if i.incidences_i == j.name:
+    #             i.incidences_i = j
+    #         elif i.incidences_f == j.name:
+    #             i.incidences_f = j
     
     for i in lista_elementos:
         x_total = float(i.incidences_f.x)-float(i.incidences_i.x)

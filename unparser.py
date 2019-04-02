@@ -3,8 +3,7 @@ from classes import Point, Element, Load, Rigidez
 from parca import pars
 from calc import calc
 
-def unpars(arquivo):
-    point_list, element_list, load_list = calc(arquivo)
+def unpars(point_list, element_list):
 
     reaction_list = []
     stress_list = []
@@ -41,5 +40,3 @@ def unpars(arquivo):
         saida.write(stress_list[l])
 
     saida.close()
-
-unpars("entrada_aps.fem")
