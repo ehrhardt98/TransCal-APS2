@@ -7,12 +7,12 @@ import sys
 
 import argparse
 parser = argparse.ArgumentParser(description='Solves a truss structure')
-parser.add_argument('-m', type=str, default='gauss'
+parser.add_argument('-m', type=str, default='gauss',
                     help='Resolution method as a string (gauss or jacobi)')
-parser.add_argument('-ite', type=int, default='5000'
+parser.add_argument('-ite', type=int, default='5000',
                     help='Number of iterations')
-parser.add_argument('-file', type=str, default='entrada.txt'
-                    help='input file')
+parser.add_argument('-file', type=str, default='entrada.txt',
+                    help='Input file path')
 args = parser.parse_args()
 
 ss = SystemElements()
