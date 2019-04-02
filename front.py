@@ -4,8 +4,15 @@ from parca import pars
 from calc import calc
 from unparser import unpars
 import sys
-program_name = sys.argv[0]
-arguments = sys.argv[1:]
+
+import argparse
+parser = argparse.ArgumentParser(description='Solves a truss structure')
+parser.add_argument('-m', type=str,
+                    help='Resolution method as a string (gauss or jacobi)')
+parser.add_argument('-ite', type=int,
+                    help='Number of iterations')
+
+args = parser.parse_args()
 
 ss = SystemElements()
 element_type = 'truss'
@@ -21,7 +28,6 @@ if __name__ == "__main__":
                 i.incidences_i = j
             elif i.incidences_f == j.name:
                 i.incidences_f = j
-
 
     for i in element_list:
         inicial = i.incidences_i
@@ -47,26 +53,34 @@ if __name__ == "__main__":
             ss.add_support_fixed(node_id=ponto)
 
     for i in load_list:
-        ponto = ss.find_node_id([point_list[int(i.point)-1].x, point_list[int(i.point)-1].y])
-        ss.point_load(node_id=ponto, Fx=int(i.intensity_x), Fy=int(i.intensity_y))
+        ponto = ss.find_node_id(
+            [point_list[int(i.point)-1].x, point_list[int(i.point)-1].y])
+        ss.point_load(node_id=ponto, Fx=int(
+            i.intensity_x), Fy=int(i.intensity_y))
 
     ss.show_structure()
     ss.solve()
     ss.show_displacement()
-
     # point_list, element_list, load_list = calc(point_list, element_list, load_list)
-    if len(arguments) !=0 and arguments[0] == 'jacobi':
+    if args.m and args.ite:
         point_list, element_list, load_list = calc(
-            point_list, element_list, load_list, 'jacobi')
+            point_list, element_list, load_list, args.m, args.ite)
+    elif args.m:
+        point_list, element_list, load_list = calc(
+            point_list, element_list, args.m)
     else:
         point_list, element_list, load_list = calc(
             point_list, element_list, load_list)
 
     for i in element_list:
-        inicial_x = float(i.incidences_i.x) + i.incidences_i.x_displacement * exagero
-        inicial_y = float(i.incidences_i.y) + i.incidences_i.y_displacement * exagero
-        final_x = float(i.incidences_f.x) + i.incidences_f.x_displacement * exagero
-        final_y = float(i.incidences_f.y) + i.incidences_f.y_displacement * exagero
+        inicial_x = float(i.incidences_i.x) + \
+            i.incidences_i.x_displacement * exagero
+        inicial_y = float(i.incidences_i.y) + \
+            i.incidences_i.y_displacement * exagero
+        final_x = float(i.incidences_f.x) + \
+            i.incidences_f.x_displacement * exagero
+        final_y = float(i.incidences_f.y) + \
+            i.incidences_f.y_displacement * exagero
         ss.add_element(location=[[inicial_x, inicial_y], [final_x, final_y]])
 
     ss.show_structure()

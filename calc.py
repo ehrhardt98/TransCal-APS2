@@ -17,7 +17,7 @@ from jacobi import obe_j
 # Arquivo de entrada
 
 
-def calc(point_list, element_list, load_list, method='gauss'):
+def calc(point_list, element_list, load_list, method='gauss', ite=5000):
 
     element_list, point_list = calcSenCos(element_list, point_list)
     matrix_list = []
@@ -64,10 +64,10 @@ def calc(point_list, element_list, load_list, method='gauss'):
 
     if method == 'gauss':
         v_deslocamento_metodo = gauss(
-            5000, 0.0001, matrixContorno, v_carregamento_contorno)
+            ite, 0.0001, matrixContorno, v_carregamento_contorno)
     else:
         v_deslocamento_metodo = obe_j(
-            5000, 0.0001, matrixContorno, v_carregamento_contorno)
+            ite, 0.0001, matrixContorno, v_carregamento_contorno)
 
     contador = 0
 
