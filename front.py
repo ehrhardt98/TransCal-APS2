@@ -51,6 +51,8 @@ if __name__ == "__main__":
         ss.point_load(node_id=ponto, Fx=int(i.intensity_x), Fy=int(i.intensity_y))
 
     ss.show_structure()
+    ss.solve()
+    ss.show_displacement()
 
     # point_list, element_list, load_list = calc(point_list, element_list, load_list)
     if len(arguments) !=0 and arguments[0] == 'jacobi':
