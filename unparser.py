@@ -17,7 +17,6 @@ def unpars(point_list, element_list):
             reaction_list.append("\n" + point.name + " FX " + str(point.x_reaction))
         if point.y_reaction != 0:
             reaction_list.append("\n" + point.name + " FY " + str(point.y_reaction))
-            print(type(point.x_displacement))
         text = "\n" + point.name + " " + str(point.x_displacement) + " " + str(point.y_displacement)
         saida.write(text)
 
